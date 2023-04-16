@@ -9,7 +9,7 @@ pipeline {
                 }
             }
         }
-        stage('Hello') {
+        stage('Test') {
             steps {
                 script {
                     def commitHash = sh(returnStdout: true, script: "cd ${env.GIT_HOME} ; git rev-parse --short HEAD").trim()
@@ -34,8 +34,7 @@ pipeline {
         }
     }
     post {
-        // regression
-        failure {
+        regression {
             script {
                 echo "Failure actions"
                 
